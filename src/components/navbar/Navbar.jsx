@@ -7,7 +7,7 @@ import {
   SiBuzzfeed,
 } from "../../assets/icons";
 import defaultImg from "../../assets/user.png";
-import useAuth from "../../context/useAuth";
+import useAuth from "../../custom-hook/useAuth";
 import { authActions } from "../../redux/reducers/authSlice";
 import { dataActions } from "../../redux/reducers/dataSlice";
 import { loginHandler, logoutHandler } from "../../utils";
