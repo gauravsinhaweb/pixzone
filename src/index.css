@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bubblegum {
+  font-family: "Bubblegum Sans", cursive;
+}
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+.h-92 {
+  height: 92.3vh;
+}
+.h-88 {
+  height: 92vh;
+}
+.feed::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+html::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
