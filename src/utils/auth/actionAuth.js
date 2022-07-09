@@ -10,7 +10,11 @@ export const logoutHandler = async (
   authActions
 ) => {
   await logOut();
-
+  dispatch(
+    dataActions.setFeed({
+      feed: [],
+    })
+  );
   dispatch(
     dataActions.setUsers({
       users: [],
