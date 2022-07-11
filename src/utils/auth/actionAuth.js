@@ -1,6 +1,12 @@
-export const loginHandler = async (loginWithGoogle, dispatch, authActions) => {
+export const loginHandler = async (
+  loginWithGoogle,
+  dispatch,
+  authActions,
+  navigate
+) => {
   await loginWithGoogle();
   dispatch(authActions.setIsAuthenticated({ isAuthenticated: true }));
+  navigate("/");
 };
 
 export const logoutHandler = async (
@@ -20,5 +26,6 @@ export const logoutHandler = async (
       users: [],
     })
   );
+  localStorage.setItem("isAuthenticated", false);
   dispatch(authActions.setIsAuthenticated({ isAuthenticated: false }));
 };

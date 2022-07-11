@@ -5,7 +5,12 @@ export {
   postComment,
   deleteComment,
   submitEditUser,
+  getFollowers,
+  getFollowing,
+  followHandler,
 } from "./backendActions";
+
+export { uploadImageHandler, postHandler } from "./post/actionPost";
 export {
   likeHandler,
   commentHandler,
@@ -13,5 +18,4 @@ export {
   commentSubmitHandler,
   commentDeleteHandler,
 } from "./feed/actionFeed";
-export { uploadImageHandler, postHandler } from "./post/actionPost";
 export { loginHandler, logoutHandler } from "./auth/actionAuth";

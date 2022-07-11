@@ -51,7 +51,8 @@ export const submitEditUser = async (
   usernameRef,
   bioRef,
   linkRef,
-  setIsOpen
+  setIsOpen,
+  isOpen
 ) => {
   e.preventDefault();
   await db
@@ -75,5 +76,55 @@ export const submitEditUser = async (
       link: linkRef.current?.value,
     })
   );
-  setIsOpen(false);
+  setIsOpen({ ...isOpen, editModal: false });
+};
+
+export const getFollowers = (user, dispatch, dataAction) => {
+  db.collection("users")
+    .doc(user?.id)
+    .collection("followers")
+    .onSnapshot((snapshot) =>
+      dispatch(
+        dataAction.setFollowers({
+          followers: snapshot.docs.map((doc) => doc.data()),
+        })
+      )
+    );
+};
+
+export const getFollowing = (user, dispatch, dataAction) => {
+  db.collection("users")
+    .doc(user?.id)
+    .collection("following")
+    .onSnapshot((snapshot) =>
+      dispatch(
+        dataAction.setFollowing({
+          following: snapshot.docs.map((doc) => doc.data()),
+        })
+      )
+    );
+};
+
+export const followHandler = (id, auth, user, setAction, action) => {
+  db.collection("users")
+    .doc(id)
+    .collection("followers")
+    .doc(auth.user.uid)
+    .set({
+      id: auth.user.uid,
+      name: auth.user.displayName,
+      photoURL: auth.user.photoURL,
+      email: auth.user.email,
+    });
+  db.collection("users")
+    .doc(auth.user.uid)
+    .collection("following")
+    .doc(id)
+    .set({
+      id: id,
+      name: user?.name,
+      photoURL: user?.photoURL,
+      email: user?.email,
+    });
+  setAction({ ...action, isFollow: !action.isFollow });
 };

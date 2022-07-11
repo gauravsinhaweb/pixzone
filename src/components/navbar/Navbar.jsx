@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   BsFillBookmarkStarFill,
   BsFillMoonStarsFill,
@@ -12,17 +12,21 @@ import { authActions } from "../../redux/reducers/authSlice";
 import { dataActions } from "../../redux/reducers/dataSlice";
 import { loginHandler, logoutHandler } from "../../utils";
 
-export const Navbar = (props) => {
-  const { toggleTheme, theme } = props;
-  const { auth } = useSelector((state) => state);
+export const Navbar = () => {
+  const { auth, data } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loginWithGoogle, logOut] = useAuth();
+  const toggleTheme = () => {
+    localStorage.setItem("theme", JSON.stringify(!data.theme));
+    dispatch(dataActions.setTheme({ theme: !data.theme }));
+  };
   return (
     <>
       <nav>
         <div
           className={`text-xl flex flex-row  p-1 justify-center md:justify-between items-center ${
-            theme ? "bg-white " : "bg-black"
+            data.theme ? "bg-white " : "bg-black"
           }`}
         >
           <div className="ml-8  text-white hidden md:flex">
@@ -35,11 +39,11 @@ export const Navbar = (props) => {
               </div>
             </Link>
           </div>
-          <div className="flex flex-row mr-8 md:justify-end justify-evenly w-full">
+          <div className="flex flex-row md:mr-8 md:justify-end justify-evenly w-full">
             <div
               title="Explore"
               className={`text-gray-600 ${
-                theme
+                data.theme
                   ? "hover:text-black text-gray-600"
                   : "hover:text-white text-gray-300"
               } text-center px-2 py-2 m-2  cursor-pointer`}
@@ -51,7 +55,7 @@ export const Navbar = (props) => {
             <div
               title="Explore"
               className={`text-gray-600 ${
-                theme
+                data.theme
                   ? "hover:text-black text-gray-600"
                   : "hover:text-white text-gray-300"
               } text-center px-2 py-2 m-2  cursor-pointer`}
@@ -64,7 +68,7 @@ export const Navbar = (props) => {
               title="Explore"
               onClick={toggleTheme}
               className={`text-gray-600 ${
-                theme
+                data.theme
                   ? "hover:text-black text-gray-600"
                   : "hover:text-white text-gray-300"
               } text-center px-2 py-2 m-2  cursor-pointer`}
@@ -75,14 +79,14 @@ export const Navbar = (props) => {
             </div>
             <div
               onClick={() =>
-                loginHandler(loginWithGoogle, dispatch, authActions)
+                loginHandler(loginWithGoogle, dispatch, authActions, navigate)
               }
               title={auth.isAuthenticated ? auth.user.displayName : "Login"}
               className={`text-gray-600 ${
-                theme
+                data.theme
                   ? "hover:text-black text-gray-600"
                   : "hover:text-white text-gray-300"
-              } text-center pl-6  mr-4 py-2 m-2 gap-2 text-sm flex justify-center items-center cursor-pointer`}
+              } text-center px-4  md:mr-4 md:py-2 md:m-2 gap-2 text-sm flex justify-center items-center cursor-pointer`}
             >
               <div className="bg-gray-300 h-6 w-6  rounded-full overflow-hidden">
                 <img
@@ -100,10 +104,10 @@ export const Navbar = (props) => {
                 logoutHandler(logOut, dispatch, dataActions, authActions)
               }
               className={`text-gray-600 ${
-                theme
+                data.theme
                   ? "hover:text-black text-gray-600"
                   : "hover:text-white text-gray-300"
-              } text-center pl-6 mr-4 py-2 m-2  cursor-pointer`}
+              } text-center md:pl-6 md:mr-4 md:py-2 md:m-2  cursor-pointer`}
             >
               <HiOutlineLogout />
             </div>
