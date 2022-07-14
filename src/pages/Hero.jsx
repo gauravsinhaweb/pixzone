@@ -56,8 +56,8 @@ export const Hero = () => {
                 key={post.id}
                 className={`${
                   data.theme
-                    ? "bg-white text-black border-gray-200 hover:bg-gray-100"
-                    : "bg-black text-white border-gray-800 hover:bg-gray-900"
+                    ? "bg-white text-black border-gray-200 md:hover:bg-gray-100"
+                    : "bg-black text-white border-gray-800 md:hover:bg-gray-900"
                 } max-w-lg border break-words p-4 `}
               >
                 <FeedCard post={post} data={data} />
