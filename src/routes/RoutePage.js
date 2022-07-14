@@ -11,7 +11,7 @@ const RoutePage = () => {
       <Router>
         <Navbar />
         <div
-          className={` pt-5 ${
+          className={`md:pt-5 ${
             data.theme ? "bg-slate-200 text-black" : "bg-black text-white"
           }`}
         >
