@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import {
   FaBookmark,
@@ -21,7 +22,17 @@ import {
 import { CommentsDisplay } from "../index";
 
 export const FeedCard = ({
-  post: { displayName, username, id, likes, text, image, avatar, timestamp },
+  post: {
+    displayName,
+    username,
+    uid,
+    id,
+    likes,
+    text,
+    image,
+    avatar,
+    timestamp,
+  },
 }) => {
   const { data, auth } = useSelector((state) => state);
   const [action, setAction] = useState({
@@ -34,14 +45,20 @@ export const FeedCard = ({
   const [commentList, setCommentList] = useState([]);
   const date = timestamp?.toDate();
   const commentID = uuid();
-
+  const navigate = useNavigate();
+  const userProfile = (id) => {
+    navigate(`/${id}`);
+  };
   useEffect(() => {
     getComments(id, setCommentList);
   }, [id]);
   return (
     <>
       <div className="flex justify-between gap-6">
-        <div className="bg-gray-300 h-10 w-10  rounded-full overflow-hidden">
+        <div
+          onClick={() => userProfile(uid)}
+          className="bg-gray-300 h-10 w-10  rounded-full overflow-hidden"
+        >
           <img src={avatar} alt={displayName} />
         </div>
         <div className="flex-1">
