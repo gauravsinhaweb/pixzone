@@ -28,7 +28,7 @@ export const Hero = () => {
         <section className="hidden md:block w-3/12">
           <SidebarCard />
         </section>
-        <section className="w-full md:w-6/12 feed justify-start h-88 overflow-y-scroll items-center flex-col  px-4">
+        <section className="w-full md:w-6/12 feed justify-start h-88 overflow-y-scroll items-center flex-col  md:px-4">
           {id ? (
             <div
               className={`${
