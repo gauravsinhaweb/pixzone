@@ -25,4 +25,6 @@ export {
   FaRegSmile,
   FaRegImages,
   FaTrash,
+  FaTwitter,
 } from "react-icons/fa";
+export { FcGoogle } from "react-icons/fc";

@@ -81,7 +81,7 @@ export const Navbar = () => {
               onClick={() =>
                 loginHandler(loginWithGoogle, dispatch, authActions, navigate)
               }
-              title={auth.isAuthenticated ? auth.user.displayName : "Login"}
+              title={auth.isAuthenticated ? auth.user?.displayName : "Login"}
               className={`text-gray-600 ${
                 data.theme
                   ? "hover:text-black text-gray-600"

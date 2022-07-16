@@ -19,6 +19,10 @@ function useAuth() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        const userDataFromLocalStorage = JSON.parse(
+          localStorage.getItem("userData")
+        );
+        localStorage.setItem("pixzone-token", user.uid);
         const { uid, email, displayName, photoURL } = user;
         dispatch(
           authActions.setUser({ user: { photoURL, uid, email, displayName } })
@@ -32,9 +36,7 @@ function useAuth() {
           photoURL: user.photoURL,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         };
-        const userDataFromLocalStorage = JSON.parse(
-          localStorage.getItem("userData")
-        );
+
         db.collection("users")
           .doc(user.uid)
           .set(userDataFromLocalStorage ? userDataFromLocalStorage : userData, {
