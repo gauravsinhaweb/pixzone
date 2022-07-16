@@ -4,7 +4,7 @@ import RoutePage from "./routes/RoutePage";
 function App() {
   return (
     <>
-      <div className="roboto ">
+      <div className="roboto">
         <RoutePage />
       </div>
     </>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { dataActions } from "../../redux/reducers/dataSlice";
 import { followHandler, getFollowers, getFollowing } from "../../utils";
 import { EditProfileModal, StatsModal } from "../index";
+
 export const ProfileCard = () => {
   const { data, auth } = useSelector((state) => state);
   const dispatch = useDispatch();

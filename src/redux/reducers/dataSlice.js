@@ -11,6 +11,8 @@ const initialState = {
   imageUploadProgress: 0,
   userID: "",
   showModal: false,
+  followers: [],
+  following: [],
 };
 
 const dataSlice = createSlice({
@@ -41,6 +43,12 @@ const dataSlice = createSlice({
     },
     setShowModal: (state, action) => {
       state.showModal = action.payload.showModal;
+    },
+    setFollowers: (state, action) => {
+      state.followers = action.payload.followers;
+    },
+    setFollowing: (state, action) => {
+      state.following = action.payload.following;
     },
   },
 });
