@@ -26,6 +26,6 @@ export const logoutHandler = async (
       users: [],
     })
   );
-  localStorage.setItem("isAuthenticated", false);
+  localStorage.setItem("pixzone-token", "");
   dispatch(authActions.setIsAuthenticated({ isAuthenticated: false }));
 };
