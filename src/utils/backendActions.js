@@ -128,3 +128,17 @@ export const followHandler = (id, auth, user, setAction, action) => {
     });
   setAction({ ...action, isFollow: !action.isFollow });
 };
+
+export const unFollowHandler = (id, auth, user, setAction, action) => {
+  db.collection("users")
+    .doc(id)
+    .collection("followers")
+    .doc(auth.user.uid)
+    .delete();
+  db.collection("users")
+    .doc(auth.user.uid)
+    .collection("following")
+    .doc(id)
+    .delete();
+  setAction({ ...action, isFollow: !action.isFollow });
+};

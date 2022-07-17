@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { dataActions } from "../../redux/reducers/dataSlice";
-import { followHandler, getFollowers, getFollowing } from "../../utils";
+import {
+  followHandler,
+  unFollowHandler,
+  getFollowers,
+  getFollowing,
+} from "../../utils";
 import { EditProfileModal, StatsModal } from "../index";
-
 export const ProfileCard = () => {
   const { data, auth } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const user = data.users?.find((user) => user.id === data.userID);
+  const user = data.users?.find((user) => user?.id === data?.userID);
   const [isModalOpen, setIsModalOpen] = useState({
     editModal: false,
     statsModal: false,
@@ -84,20 +88,27 @@ export const ProfileCard = () => {
             >
               Edit profile
             </button>
-          ) : (
+          ) : data.followers?.length === 0 ? (
             <button
               onClick={() =>
                 followHandler(user?.id, auth, user, setAction, action)
               }
-              className={`mt-16 text-sm border  p-2 px-5 ${
-                action.isFollow
-                  ? "text-red-400 bg-transparent border-red-400"
-                  : ""
-              } font-bold rounded-3xl border-gray-400 ${
+              className={`mt-16 text-sm border  p-2 px-5 font-bold rounded-3xl border-gray-400 ${
                 data.theme ? "bg-black text-white" : "bg-white text-black"
               }`}
             >
-              {!action.isFollow ? "Follow" : "Unfollow"}
+              Follow
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                unFollowHandler(user?.id, auth, user, setAction, action)
+              }
+              className={`mt-16 text-sm border  p-2 px-5 text-red-400 bg-transparent border-red-400 font-bold rounded-3xl border-gray-400 ${
+                data.theme ? "bg-black text-white" : "bg-white text-black"
+              }`}
+            >
+              Unfollow
             </button>
           )}
         </div>
