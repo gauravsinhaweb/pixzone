@@ -8,6 +8,7 @@ export {
   getFollowers,
   getFollowing,
   followHandler,
+  unFollowHandler,
 } from "./backendActions";
 
 export { uploadImageHandler, postHandler } from "./post/actionPost";

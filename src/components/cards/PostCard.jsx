@@ -47,7 +47,7 @@ export const PostCard = () => {
       <div className="flex justify-between gap-6 pt-8 px-4">
         <div className="bg-gray-300 h-10 w-10  rounded-full overflow-hidden ">
           <img
-            src={auth.isAuthenticated ? auth.user.photoURL : defaultImg}
+            src={auth.isAuthenticated ? auth.user?.photoURL : defaultImg}
             alt={auth.user?.displayName}
           />
         </div>
