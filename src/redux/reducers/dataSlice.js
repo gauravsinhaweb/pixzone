@@ -13,6 +13,10 @@ const initialState = {
   showModal: false,
   followers: [],
   following: [],
+  showBookmark: false,
+  showPopular: false,
+  showRecent: false,
+  showTrending: false,
 };
 
 const dataSlice = createSlice({
@@ -49,6 +53,18 @@ const dataSlice = createSlice({
     },
     setFollowing: (state, action) => {
       state.following = action.payload.following;
+    },
+    setShowBookmark: (state, action) => {
+      state.showBookmark = action.payload.showBookmark;
+    },
+    setShowPopular: (state, action) => {
+      state.showPopular = action.payload.showPopular;
+    },
+    setShowRecent: (state, action) => {
+      state.showRecent = action.payload.showRecent;
+    },
+    setShowTrending: (state, action) => {
+      state.showTrending = action.payload.showTrending;
     },
   },
 });

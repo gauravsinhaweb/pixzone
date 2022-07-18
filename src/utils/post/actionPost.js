@@ -46,7 +46,7 @@ export const postHandler = async (
 ) => {
   const userDataFromLocalStorage = JSON.parse(localStorage.getItem("userData"));
   const postData = {
-    displayName: userDataFromLocalStorage.name || auth.user.displayName,
+    displayName: userDataFromLocalStorage?.name || auth.user.displayName,
     id: id,
     username:
       "@" + auth.user.displayName.replace(" ", "").toLowerCase() ||
@@ -58,7 +58,10 @@ export const postHandler = async (
     time: Date.now(),
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
   };
-  await db.collection(`users/${auth.user?.uid}/posts`).add(postData);
+  await db
+    .collection(`users/${auth.user?.uid}/posts`)
+    .doc(id)
+    .set(postData, { merge: true });
   await db.collection(`feed`).doc(id).set(postData, { merge: true });
   setInputText("");
   dispatch(

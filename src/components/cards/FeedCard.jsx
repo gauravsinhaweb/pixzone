@@ -16,7 +16,6 @@ import {
   getComments,
   likeHandler,
   postComment,
-  setLikeInPost,
   timeSince,
 } from "../../utils";
 import { CommentsDisplay } from "../index";
@@ -32,6 +31,8 @@ export const FeedCard = ({
     image,
     avatar,
     timestamp,
+    isBookmarked,
+    isLiked,
   },
 }) => {
   const { data, auth } = useSelector((state) => state);
@@ -92,19 +93,15 @@ export const FeedCard = ({
             <div className="flex gap-8">
               <div
                 className={`flex items-center gap-4 ${
-                  action?.isHeartClicked ? "text-pink-600" : ""
+                  isLiked ? "text-pink-600" : ""
                 }`}
               >
                 <button
                   onClick={() =>
-                    likeHandler(setAction, setLikeInPost, action, id, likes)
+                    likeHandler(setAction, action, id, likes, auth, isLiked)
                   }
                 >
-                  {action?.isHeartClicked ? (
-                    <FaHeart size={18} />
-                  ) : (
-                    <FaRegHeart size={18} />
-                  )}
+                  {isLiked ? <FaHeart size={18} /> : <FaRegHeart size={18} />}
                 </button>
                 <span className="text-sm">{likes}</span>
               </div>
@@ -120,10 +117,10 @@ export const FeedCard = ({
             </div>
             <div>
               <button
-                onClick={bookmarkHandler}
-                className={data.isBookmarked ? "text-gray-400" : ""}
+                onClick={() => bookmarkHandler(setAction, action, id, auth)}
+                className={isBookmarked ? "text-green-600" : ""}
               >
-                {data.isBookmarked ? (
+                {isBookmarked ? (
                   <FaBookmark size={18} />
                 ) : (
                   <FaRegBookmark size={18} />

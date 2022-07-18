@@ -53,7 +53,14 @@ export const Navbar = () => {
               </Link>
             </div>
             <div
-              title="Explore"
+              onClick={() =>
+                dispatch(
+                  dataActions.setShowBookmark({
+                    showBookmark: !data.showBookmark,
+                  })
+                )
+              }
+              title="Bookmark"
               className={`text-gray-600 ${
                 data.theme
                   ? "hover:text-black text-gray-600"
