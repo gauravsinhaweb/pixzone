@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -9,6 +10,9 @@
 }
 .roboto {
   font-family: "Roboto", sans-serif;
+}
+.space-mono {
+  font-family: "Space Mono", monospace;
 }
 .h-92 {
   height: 92.3vh;
