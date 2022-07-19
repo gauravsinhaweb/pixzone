@@ -26,5 +26,7 @@ html::-webkit-scrollbar {
 }
 body {
   background-color: #000;
-  max-width: 1450px;
+}
+.max-w-screen-xl {
+  max-width: 1300px;
 }
