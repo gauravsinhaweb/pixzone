@@ -54,6 +54,7 @@ export const postHandler = async (
     text: inputText,
     image: data.photoURL,
     uid: auth.user.uid,
+    isLiked: false,
     avatar: auth.user.photoURL,
     likes: 0,
     time: Date.now(),

@@ -45,13 +45,13 @@ export const getComments = (id, setCommentList) => {
       setCommentList(snapshot.docs.map((doc) => doc.data()))
     );
 };
-export const setLikeInPost = (isLiked, id, likes, isHeartClicked, auth) => {
+export const setLikeInPost = (isLiked, id, likes, auth) => {
   db.collection("feed")
     .doc(id)
     .set(
       {
         likes: !isLiked ? likes + 1 : likes - 1,
-        isLiked: !isHeartClicked,
+        isLiked: !isLiked,
       },
       { merge: true }
     );
@@ -60,7 +60,7 @@ export const setLikeInPost = (isLiked, id, likes, isHeartClicked, auth) => {
     .set(
       {
         likes: !isLiked ? likes + 1 : likes - 1,
-        isLiked: !isHeartClicked,
+        isLiked: !isLiked,
       },
       { merge: true }
     );

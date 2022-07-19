@@ -2,7 +2,7 @@ import { deleteComment, postBookmark, setLikeInPost } from "../backendActions";
 
 export const likeHandler = (setAction, action, id, likes, auth, isLiked) => {
   setAction({ isHeartClicked: !action?.isHeartClicked });
-  setLikeInPost(isLiked, id, likes, action?.isHeartClicked, auth);
+  setLikeInPost(isLiked, id, likes, auth);
 };
 
 export const bookmarkHandler = (setAction, action, id, auth) => {
