@@ -41,6 +41,11 @@ export const Navbar = () => {
           </div>
           <div className="flex flex-row md:mr-8 md:justify-end justify-evenly w-full">
             <div
+              onClick={() =>
+                dispatch(
+                  dataActions.setExplore({ explore: !data.explore })
+                )
+              }
               title="Explore"
               className={`text-gray-600 ${
                 data.theme
@@ -72,7 +77,7 @@ export const Navbar = () => {
               </Link>
             </div>{" "}
             <div
-              title="Explore"
+              title="theme"
               onClick={toggleTheme}
               className={`text-gray-600 ${
                 data.theme

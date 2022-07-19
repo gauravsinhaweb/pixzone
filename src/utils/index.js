@@ -26,4 +26,5 @@ export {
   filterPopular,
   filterRecent,
   filterTrending,
+  filterExplore,
 } from "./filter/filters";

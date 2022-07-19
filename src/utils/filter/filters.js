@@ -24,3 +24,9 @@ export const filterTrending = (feed, showTrending) => {
   }
   return feed;
 };
+export const filterExplore = (feed, showExplore) => {
+  if (showExplore) {
+    return feed.slice().sort((a, b) => b?.likes - a?.likes);
+  }
+  return feed;
+};

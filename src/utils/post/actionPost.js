@@ -53,6 +53,7 @@ export const postHandler = async (
       userDataFromLocalStorage.username,
     text: inputText,
     image: data.photoURL,
+    uid: auth.user.uid,
     avatar: auth.user.photoURL,
     likes: 0,
     time: Date.now(),

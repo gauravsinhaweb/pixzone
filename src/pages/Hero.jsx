@@ -11,6 +11,7 @@ import {
 import { dataActions } from "../redux/reducers/dataSlice";
 import {
   filterBookmark,
+  filterExplore,
   filterPopular,
   filterRecent,
   filterTrending,
@@ -30,7 +31,8 @@ export const Hero = () => {
   const getBookmark = filterBookmark(data.feed, data.showBookmark);
   const getPopular = filterPopular(getBookmark, data.showPopular);
   const getRecent = filterRecent(getPopular, data.showRecent);
-  const filteredFeed = filterTrending(getRecent, data.showTrending);
+  const getTrending = filterTrending(getRecent, data.showTrending);
+  const filteredFeed = filterExplore(getTrending, data.explore);
   return (
     <>
       <div className="flex justify-around  flex-start md:px-8 ">

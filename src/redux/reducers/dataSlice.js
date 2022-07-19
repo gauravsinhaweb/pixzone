@@ -17,6 +17,7 @@ const initialState = {
   showPopular: false,
   showRecent: false,
   showTrending: false,
+  explore: false,
 };
 
 const dataSlice = createSlice({
@@ -65,6 +66,9 @@ const dataSlice = createSlice({
     },
     setShowTrending: (state, action) => {
       state.showTrending = action.payload.showTrending;
+    },
+    setExplore: (state, action) => {
+      state.explore = action.payload.explore;
     },
   },
 });
