@@ -42,9 +42,7 @@ export const Navbar = () => {
           <div className="flex flex-row md:mr-8 md:justify-end justify-evenly w-full">
             <div
               onClick={() =>
-                dispatch(
-                  dataActions.setExplore({ explore: !data.explore })
-                )
+                dispatch(dataActions.setExplore({ explore: !data.explore }))
               }
               title="Explore"
               className={`text-gray-600 ${
@@ -98,7 +96,7 @@ export const Navbar = () => {
                 data.theme
                   ? "hover:text-black text-gray-600"
                   : "hover:text-white text-gray-300"
-              } text-center px-4  md:mr-4 md:py-2 md:m-2 gap-2 text-sm flex justify-center items-center cursor-pointer`}
+              } text-center md:px-4 pl-4 md:mr-4 md:py-2 md:m-2 gap-2 text-sm flex justify-center items-center cursor-pointer`}
             >
               <div className="bg-gray-300 h-6 w-6  rounded-full overflow-hidden">
                 <img
@@ -115,11 +113,7 @@ export const Navbar = () => {
               onClick={() =>
                 logoutHandler(logOut, dispatch, dataActions, authActions)
               }
-              className={`text-gray-600 ${
-                data.theme
-                  ? "hover:text-black text-gray-600"
-                  : "hover:text-white text-gray-300"
-              } text-center md:pl-6 md:mr-4 md:py-2 md:m-2  cursor-pointer`}
+              className={`text-gray-600 text-red-700 text-center pl-4 pr-2 md:pl-6 md:mr-4 md:py-2 md:m-2  cursor-pointer`}
             >
               <HiOutlineLogout />
             </div>
