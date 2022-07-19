@@ -1,11 +1,14 @@
-import { deleteComment } from "../backendActions";
+import { deleteComment, postBookmark, setLikeInPost } from "../backendActions";
 
-export const likeHandler = (setAction, setLikeInPost, action, id, likes) => {
+export const likeHandler = (setAction, action, id, likes, auth, isLiked) => {
   setAction({ isHeartClicked: !action?.isHeartClicked });
-  setLikeInPost(action, id, likes);
+  setLikeInPost(isLiked, id, likes, action?.isHeartClicked, auth);
 };
 
-export const bookmarkHandler = () => {};
+export const bookmarkHandler = (setAction, action, id, auth) => {
+  setAction({ isBookmarkClicked: !action?.isBookmarkClicked });
+  postBookmark(id, auth, action.isBookmarkClicked);
+};
 
 export const commentHandler = (setAction, action) => {
   setAction({

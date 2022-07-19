@@ -9,6 +9,13 @@ import {
   WidgetCard,
 } from "../components";
 import { dataActions } from "../redux/reducers/dataSlice";
+import {
+  filterBookmark,
+  filterExplore,
+  filterPopular,
+  filterRecent,
+  filterTrending,
+} from "../utils";
 
 export const Hero = () => {
   const { data } = useSelector((state) => state);
@@ -21,7 +28,11 @@ export const Hero = () => {
       })
     );
   }, [dispatch, id]);
-
+  const getBookmark = filterBookmark(data.feed, data.showBookmark);
+  const getPopular = filterPopular(getBookmark, data.showPopular);
+  const getRecent = filterRecent(getPopular, data.showRecent);
+  const getTrending = filterTrending(getRecent, data.showTrending);
+  const filteredFeed = filterExplore(getTrending, data.explore);
   return (
     <>
       <div className="flex justify-around  flex-start md:px-8 ">
@@ -50,8 +61,8 @@ export const Hero = () => {
               <PostCard id={id} />
             </div>
           )}
-          {data.feed &&
-            data.feed.map((post) => (
+          {filteredFeed &&
+            filteredFeed.map((post) => (
               <div
                 key={post.id}
                 className={`${

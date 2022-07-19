@@ -9,6 +9,7 @@ export {
   getFollowing,
   followHandler,
   unFollowHandler,
+  postBookmark, // getBookmarks,
 } from "./backendActions";
 
 export { uploadImageHandler, postHandler } from "./post/actionPost";
@@ -20,3 +21,10 @@ export {
   commentDeleteHandler,
 } from "./feed/actionFeed";
 export { loginHandler, logoutHandler } from "./auth/actionAuth";
+export {
+  filterBookmark,
+  filterPopular,
+  filterRecent,
+  filterTrending,
+  filterExplore,
+} from "./filter/filters";

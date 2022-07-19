@@ -21,6 +21,21 @@ export const postComment = (id, commentID, commentText, auth) => {
     .doc(commentID)
     .set(postData);
 };
+export const postBookmark = (id, auth, isBookmarked) => {
+  db.collection(`users/${auth.user?.uid}/posts`).doc(id).set(
+    {
+      isBookmarked: !isBookmarked,
+    },
+    { merge: true }
+  );
+  db.collection(`feed`).doc(id).set(
+    {
+      isBookmarked: !isBookmarked,
+    },
+    { merge: true }
+  );
+};
+
 export const getComments = (id, setCommentList) => {
   db.collection("feed")
     .doc(id)
@@ -30,12 +45,22 @@ export const getComments = (id, setCommentList) => {
       setCommentList(snapshot.docs.map((doc) => doc.data()))
     );
 };
-export const setLikeInPost = (action, id, likes) => {
+export const setLikeInPost = (isLiked, id, likes, isHeartClicked, auth) => {
   db.collection("feed")
     .doc(id)
     .set(
       {
-        likes: action.isHeartClicked ? likes - 1 : likes + 1,
+        likes: !isLiked ? likes + 1 : likes - 1,
+        isLiked: !isHeartClicked,
+      },
+      { merge: true }
+    );
+  db.collection(`users/${auth.user?.uid}/posts`)
+    .doc(id)
+    .set(
+      {
+        likes: !isLiked ? likes + 1 : likes - 1,
+        isLiked: !isHeartClicked,
       },
       { merge: true }
     );
