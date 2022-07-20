@@ -3,7 +3,7 @@
 
 <div align="center">
 
-<img alt="pixzone" src="./src/assets/pixzone.png" width="1048px" height="238px" />
+<img alt="pixzone" src="./src/assets/pixzone.png" />
 
 pixzone is a social media application, where you can connent with the world in one platform.
 
