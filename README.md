@@ -3,9 +3,9 @@
 
 <div align="center">
 
-<img alt="pixzone" src="./src/assets/pixzone.png" width="1048px" height="238px" />
+<img alt="pixzone" src="./src/assets/pixzone.png" />
 
-pixzone is a social media application, where you can connent with the world in one platform.
+Pixzone helps you connect and share with the people in your life.
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/gauravsinhaweb?style=social)](https://twitter.com/gauravsinhaweb)
 
