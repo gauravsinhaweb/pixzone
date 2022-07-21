@@ -42,7 +42,7 @@ export const Login = () => {
             <span> Sign in with Twitter</span>
           </button>{" "}
           <div className="absolute bottom-2 my-2">
-            <div className=" text-sm text-gray-400 my-2 space-mono text-center">
+            <div className=" text-xs text-gray-400 my-2 space-mono text-center">
               {" "}
               Made with -
             </div>
