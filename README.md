@@ -41,6 +41,7 @@ Pixzone helps you connect and share with the people in your life.
 - Explore Feed (explore new people)
 - Bookmark Posts
 - Authentication
+- Remember login
 
 ---
 
