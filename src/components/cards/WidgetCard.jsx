@@ -15,8 +15,9 @@ export const WidgetCard = () => {
     <>
       <div className="text-xl font-black">You might like</div>
       {filteredUsers &&
-        filteredUsers.map(
-          ({ name, id, username, timestamp, photoURL }, index) => (
+        filteredUsers
+          .slice(-10, -4)
+          .map(({ name, id, username, timestamp, photoURL }, index) => (
             <div
               key={index}
               className="flex flex-wrap items-start justify-between gap-6 my-6 break-words"
@@ -41,8 +42,7 @@ export const WidgetCard = () => {
                 </div>
               </div>
             </div>
-          )
-        )}
+          ))}
     </>
   );
 };
