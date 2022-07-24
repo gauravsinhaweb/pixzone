@@ -8,15 +8,18 @@ export const WidgetCard = () => {
   const userProfile = (id) => {
     navigate(`/${id}`);
   };
-  const filteredUsers = data.users?.filter(
-    (user) => user.id !== auth.user?.uid
-  );
+  const filteredUsers = data.users
+    ?.filter((user) => user.id !== auth.user?.uid)
+    .sort((a, b) => {
+      return b.timestamp - a.timestamp;
+    });
+
   return (
     <>
       <div className="text-xl font-black">You might like</div>
       {filteredUsers &&
         filteredUsers
-          .slice(-10, -4)
+          .slice(0, 6)
           .map(({ name, id, username, timestamp, photoURL }, index) => (
             <div
               key={index}
